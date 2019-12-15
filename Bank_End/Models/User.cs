@@ -10,12 +10,41 @@ namespace Bank_End.Models
     {
         public int UserID { get; private set; }
         public string Name { get; set; }
-        private int _password;
+        public string Password { get; set; }
 
-        private int Password
-        {
-            get { return _password; }
-            set { _password = value; }
-        }
+        //НАДО ПОДУМАТЬ КАК СДЕЛАТЬ PASSWORD PRIVATE
+
+        //public string GetPassword()
+        //{
+        //    //Хочу сделать что-то тип сохранности пароля.
+        //    //Думаю, с помощью метода, запрашивающего кодовое слово
+        //    Console.WriteLine("Введите кодовое слово");
+        //    var kword = Console.ReadLine();
+        //    //пусть будет 11
+        //    if (kword == "11")
+        //    {
+        //        return Password;
+        //    }
+        //    else
+        //    { 
+        //        throw new Exception();
+        //        // в gui можно реализовать через trycatch
+        //    } 
+        //}
+        ////Тут тоже
+        //public void SetPassword(string pswrd)
+        //{
+        //    Console.WriteLine("Введите кодовое слово");
+        //    var kword = Console.ReadLine();
+        //    if (kword == "11")
+        //    {
+        //        Password = pswrd;
+        //    }
+        //    else
+        //    {
+        //        Console.WriteLine("НЕ то");
+        //        throw new Exception();
+        //    }
+        //}
     }
 }

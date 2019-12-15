@@ -11,7 +11,7 @@ namespace Bank_End.Models
         public int TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
-        public User Sender { get; set; }
-        public User Reciever { get; set; }
+        public Account Sender { get; set; }
+        public Account Reciever { get; set; }
     }
 }
