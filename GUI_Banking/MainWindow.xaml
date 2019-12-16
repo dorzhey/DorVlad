@@ -1,0 +1,38 @@
+﻿<Window x:Class="GUI_Banking.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GUI_Banking"
+        mc:Ignorable="d"
+        Title="DorVladInvestments" Height="350" Width="525" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="75" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!--Меню-->
+        <StackPanel Background="Aquamarine" Grid.Column="0" >
+            <Button Command="{Binding LoadMainUCCommand, Mode=OneTime}"
+                Margin="10" Width="30" Height="30" HorizontalAlignment="Center">
+                <TextBlock FontFamily="Segoe UI Symbol" FontSize="18">
+                        <Run Text="&#xE10F;" />
+                </TextBlock>
+            </Button>
+            <Button Command="{Binding LoadFirstUCCommand, Mode=OneTime}"
+                Margin="10" Width="30" Height="30" HorizontalAlignment="Center">
+                <TextBlock FontFamily="Segoe UI Symbol" FontSize="18">
+                        <Run Text="&#x1f4b8;" />
+                </TextBlock>
+            </Button>
+            <Button Command="{Binding LoadSecondUCCommand, Mode=OneTime}"
+                Margin="10" Width="30" Height="30" HorizontalAlignment="Center">
+                <TextBlock FontFamily="Segoe UI Symbol" FontSize="18">
+                        <Run Text="&#x1f4b9;" />
+                </TextBlock>
+            </Button>
+        </StackPanel>
+        <!--Контент-->
+        <ContentPresenter Grid.Column="1" x:Name="OutputView" />
+    </Grid>
+</Window>
