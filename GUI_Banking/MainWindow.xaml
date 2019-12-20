@@ -15,12 +15,12 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Bottom">Verificaion</TextBlock>
-        <AccessText Grid.Row="1" FontSize="10" VerticalAlignment="Bottom">Manager's User Name</AccessText>
-        <TextBox Grid.Row="2" Name="UserName"></TextBox>
-        <AccessText Grid.Row="3" FontSize="10" VerticalAlignment="Bottom">Manager's Password</AccessText>
-        <TextBox Grid.Row="4" Name="Password"></TextBox>
-        <Button Grid.Row="5" Click="Button_Click">Sign In</Button>
+        <TextBlock Foreground="Aqua" HorizontalAlignment="Center" VerticalAlignment="Bottom">Verificaion</TextBlock>
+        <AccessText Grid.Row="1" Background="Aquamarine" Foreground="Blue" FontSize="10" VerticalAlignment="Bottom">Manager's User Name</AccessText>
+        <TextBox Grid.Row="2" Name="UserName" Margin="20,7"></TextBox>
+        <AccessText Grid.Row="3" Background="Aquamarine" Foreground="Blue" FontSize="10" VerticalAlignment="Bottom">Manager's Password</AccessText>
+        <TextBox Grid.Row="4" Name="Password" Margin="20,7"></TextBox>
+        <Button Grid.Row="5"  Background="Aquamarine" Foreground="Blue" Click="Button_Click">Sign In</Button>
     </Grid>
         <!--Title="DorVladInvestments" Height="350" Width="525" WindowStartupLocation="CenterScreen">
     <Grid>

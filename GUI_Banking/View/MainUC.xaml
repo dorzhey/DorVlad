@@ -20,12 +20,23 @@
             <RowDefinition Height="50"/>
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
-        <TextBlock HorizontalAlignment="Center">New Client</TextBlock>
-        <AccessText Grid.Row="1" FontSize="10">Name And Surname</AccessText>
+        <TextBlock Background="Aquamarine" FontSize="18" >New Client or New Account</TextBlock>
+        <AccessText Grid.Row="1" FontSize="10" Background="Aqua">Name And Surname</AccessText>
         <TextBox Grid.Row="2" Margin="75,10,75,10" Name="NameSurname"></TextBox>
-        <AccessText Grid.Row="3">Password</AccessText>
+        <AccessText Grid.Row="3" FontSize="10" Background="Aqua">Password</AccessText>
         <TextBox Grid.Row="4" Margin="75,10,75,10" Name="Password"></TextBox>
-        <Button Grid.Row="5" Margin="100,2" Click="UserButton_Click"> Create New Client</Button>
-        <AccessText Grid.Row="6">Something</AccessText>
+        <Button Grid.Row="5" Margin="100,2" Click="UserButton_Click" FontSize="10"> Create New Client</Button>
+        <AccessText Grid.Row="6" FontSize="10" Background="Aqua">Amount</AccessText>
+        <TextBox Grid.Row="7" Margin="75,10,75,10" Name="Amount"></TextBox>
+        <AccessText Grid.Row="8" FontSize="10" Background="Aqua">SenderID and RecieverID</AccessText>
+        <Grid Grid.Row="9">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="225"/>
+                <ColumnDefinition Width="225"/>
+            </Grid.ColumnDefinitions>
+            <TextBox Name="Sender"></TextBox>
+            <TextBox Grid.Column="1" Name="Reciever"></TextBox>
+        </Grid>
+        <Button Grid.Row="10" Margin="100,2" Click="TransButton_Click" FontSize="10"></Button>
     </Grid>
 </UserControl>

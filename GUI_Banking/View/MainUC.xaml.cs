@@ -45,5 +45,39 @@ namespace GUI_Banking.View
             else { MessageBox.Show("There is this Client already!"); }
 
         }
+
+        private void TransButton_Click(object sender, RoutedEventArgs e)
+        {
+            var bm = new Bank_End.BankManager();
+            if(Sender.Text != Reciever.Text)
+            {
+                try
+                {
+                    var sender1 = new Bank_End.Models.Account();
+                    var reciever = new Bank_End.Models.Account();
+                    foreach (var acc in bm.accounts)
+                    {
+                        if (acc.AccountID == int.Parse(Sender.Text))
+                        {
+                            sender1 = acc;
+                        }
+                        if (acc.AccountID == int.Parse(Reciever.Text))
+                        {
+                            reciever = acc;
+                        }
+                    }
+                    bm.NewTransaction(sender1, reciever, decimal.Parse(Amount.Text));
+                }
+                catch(Exception ex)
+                {
+                    MessageBox.Show($"Случилась Ошибка {ex.Message}");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Нельзя отправлять одному и тому же");
+            }
+            
+        }
     }
 }
