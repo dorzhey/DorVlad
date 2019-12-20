@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class User
+    public class User
     {
         public int UserID { get; private set; }
         public string Name { get; set; }
+        public string SecondName { get; set; }
         public string Password { get; set; }
 
         //НАДО ПОДУМАТЬ КАК СДЕЛАТЬ PASSWORD PRIVATE

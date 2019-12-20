@@ -7,7 +7,7 @@ using Bank_End.Models;
 
 namespace Bank_End
 {
-    class BankManager
+    public class BankManager
     {
         public List<Account> accounts;
         public List<User> users;
@@ -99,8 +99,8 @@ namespace Bank_End
             }
         }
 
-        
 
+        
 
         public void LoadData()
         {

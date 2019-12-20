@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class Account
+    public class Account
     {
         public int AccountID { get; set; }
         public decimal Balanse { get; set; }

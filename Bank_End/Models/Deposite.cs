@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class Deposite
+    public class Deposite
     {
         public int DepositeID { get; set; }
         public decimal DepositeRate { get; set; }

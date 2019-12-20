@@ -24,5 +24,26 @@ namespace GUI_Banking.View
         {
             InitializeComponent();
         }
+
+        private void UserButton_Click(object sender, RoutedEventArgs e)
+        {
+            var userdata = NameSurname.Text.Split(' ');
+            var name = userdata[0];
+            var secondname = userdata[1];
+            var password = Password.Text;
+            var bm = new Bank_End.BankManager();
+            if(! bm.CheckUser(name, password))
+            {
+                var user = new Bank_End.Models.User
+                {
+                    Name = name,
+                    SecondName = secondname,
+                    Password = password
+                };
+                bm.users.Add(user);
+            }
+            else { MessageBox.Show("There is this Client already!"); }
+
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class Credit
+    public class Credit
     {
         public int CreditID { get; set; }
         public decimal CreditRate { get; set; }

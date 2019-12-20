@@ -24,5 +24,12 @@ namespace GUI_Banking.View
         {
             InitializeComponent();
         }
+
+        private void ShowUsersButton_Click(object sender, RoutedEventArgs e)
+        {
+            var bm = new Bank_End.BankManager();
+
+            UsersListBox.ItemsSource = bm.users;
+        }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class Transaction
+    public class Transaction
     {
         public int TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }

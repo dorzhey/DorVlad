@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Bank_End.Models
 {
-    class Card
+    public class Card
     {
         public int CardNumber { get; set; }
         public Account CardAccount { get; set; }

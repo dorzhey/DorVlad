@@ -5,8 +5,32 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:GUI_Banking.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="350" d:DesignWidth="450">
     <Grid>
-        <TextBlock>Это вторая вьюшка</TextBlock>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition Height="290"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <TextBlock HorizontalAlignment="Center">List of Clients</TextBlock>
+        <ListBox Grid.Row="1" Name = "TransListBox">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Text="{Binding TransactionDate}"/>
+                        <TextBlock Grid.Column="1" Text="{Binding Amount}" />
+                        <TextBlock Grid.Column="2" Text="{Binding Sender.AccountID}"/>
+                        <TextBlock Grid.Column="3" Text="{Binding Reciever.AccountID}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button Grid.Row="2" Margin="100,2" Click="ShowTransButton_Click">Показать</Button>
     </Grid>
 </UserControl>

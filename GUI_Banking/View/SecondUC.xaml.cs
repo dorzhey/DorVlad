@@ -24,5 +24,11 @@ namespace GUI_Banking.View
         {
             InitializeComponent();
         }
+        private void ShowTransButton_Click(object sender, RoutedEventArgs e)
+        {
+            var bm = new Bank_End.BankManager();
+
+            TransListBox.ItemsSource = bm.transactions;
+        }
     }
 }
