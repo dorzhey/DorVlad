@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,10 @@ namespace Bank_End
 
         public List<Deposit> deposits;
         public List<Credit> credits;
+        public BankManager()
+        {
+            LoadData();
+        }
         
         
         public bool CheckUser(string Name, string Password)
@@ -99,7 +104,13 @@ namespace Bank_End
             }
         }
 
-        private string UsersFileName = "Data\\password.csv";
+        private string UsersFileName = "Data\\userid_and_names.csv";
+        private string AccountFileName = "Data\\account.csv";
+        private string CardFileName = "Data\\card.csv";
+        private string CreditFileName = "Data\\credit_type.csv";
+        private string DepositFileName = "Data\\deposit_type.csv";
+        private string TransactionFileName = "Data\\transactions.csv";
+        private string ManagerFileName = "Data\\manager.csv";
 
         public List<List<string>> Desirialize(string filename)
         {
@@ -142,7 +153,7 @@ namespace Bank_End
                 {
                     UserID = int.Parse(line[0]),
                     Name = line[1],
-                    Second_name = line[2],
+                    SecondName = line[2],
                     Password = line[3]
                 };
                 result.Add(user);
@@ -150,7 +161,21 @@ namespace Bank_End
             return result;
         }
 
-
+        public List<Manager> GetManagers()
+        {
+            var temp = Desirialize(ManagerFileName);
+            var result = new List<Manager> { };
+            foreach (var line in temp)
+            {
+                var manager = new Manager
+                {
+                    ManagerID = int.Parse(line[0]),
+                    Password = line[1]
+                };
+                result.Add(manager);
+            }
+            return result;
+        }
         public List<Account> GetAccounts()
         {
             var temp = Desirialize(AccountFileName);
@@ -158,7 +183,7 @@ namespace Bank_End
             var owner = new User();
             foreach (var line in temp)
             {
-                Owner = int.Parse(line[3]);
+                var Owner = int.Parse(line[3]);
                 foreach(var user in users)
                 {
                     if(user.UserID == Owner)
@@ -183,15 +208,15 @@ namespace Bank_End
         {
             var temp = Desirialize(CardFileName);
             var result = new List<Card> { };
-            var card = new Account();
+            var acc = new Account();
             foreach (var line in temp)
             {
-                CardAccount = int.Parse(line[1]);
-                foreach (var user in users)
+                var CardAccount = int.Parse(line[1]);
+                foreach (var account in accounts)
                 {
                     if (account.AccountID == CardAccount)
                     {
-                        card = account;
+                        acc = account;
                     }
                 }
 
@@ -199,7 +224,7 @@ namespace Bank_End
                 var card = new Card
                 {
                     CardNumber = int.Parse(line[0]),
-                    CardAccount = card,
+                    CardAccount = acc,
 
                 };
                 result.Add(card);
@@ -215,12 +240,12 @@ namespace Bank_End
             var borrower = new User();
             foreach (var line in temp)
             {
-                Borrower = int.Parse(line[0]);
+                var _Borrower = int.Parse(line[0]);
                 foreach (var user in users)
                 {
-                    if (user.UserID == Borrower)
+                    if (user.UserID == _Borrower)
                     {
-                        owner = user;
+                        borrower = user;
                     }
                 }
                 var credit = new Credit
@@ -241,19 +266,19 @@ namespace Bank_End
 
 
 
-        public List<Deposits> GetDeposits()
+        public List<Deposit> GetDeposits()
         {
             var temp = Desirialize(DepositFileName);
             var result = new List<Deposit> { };
             var borrower = new User();
             foreach (var line in temp)
             {
-                Borrower = int.Parse(line[0]);
+                var Borrower = int.Parse(line[0]);
                 foreach (var user in users)
                 {
                     if (user.UserID == Borrower)
                     {
-                        owner = user;
+                        borrower = user;
                     }
                 }
                 var deposit = new Deposit
@@ -264,7 +289,7 @@ namespace Bank_End
                     DepositRate = int.Parse(line[3]),
                     IssuanceDate = DateTime.Parse(line[4]),
                     ExpireDate = DateTime.Parse(line[5]),
-                    Borrower = borrower
+                    Investor = borrower
                 };
 
                 result.Add(deposit);
@@ -277,26 +302,26 @@ namespace Bank_End
             var temp = Desirialize(TransactionFileName);
             var result = new List<Transaction> { };
             var sender = new Account();
-            var geter = new Account();
+            var reciever = new Account();
   
             foreach (var line in temp)
             {
 
 
-                Sender = int.Parse(line[0]);
-                foreach (var user in users)
+                var _Sender = int.Parse(line[0]);
+                foreach (var account in accounts)
                 {
-                    if (account.AccountID == Sender)
+                    if (account.AccountID == _Sender)
                     {
                         sender = account;
                     }
                 }
 
 
-                Reciever = int.Parse(line[1]);
-                foreach (var user in users)
+                var _Reciever = int.Parse(line[1]);
+                foreach (var account in accounts)
                 {
-                    if (account.AccountID == Reciever)
+                    if (account.AccountID == _Reciever)
                     {
                         reciever = account;
                     }
@@ -322,14 +347,17 @@ namespace Bank_End
 
 
 
-        public int TransactionID { get; set; }
-        public DateTime TransactionDate { get; set; }
-        public decimal Amount { get; set; }
-        public Account Sender { get; set; }
-        public Account Reciever { get; set; }
+        
         public void LoadData()
         {
             //загрузка данных с базы данных
+            GetUsers();
+            GetAccounts();
+            GetCards();
+            GetCredits();
+            GetTransactions();
+            GetDeposits();
+            GetManagers();
         }
             public void SaveData()
         {

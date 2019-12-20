@@ -10,7 +10,7 @@ namespace Bank_End.Models
     {
         public int AccountID { get; set; }
         public decimal Balanse { get; set; }
-        public string Currency { get; set; }
+        public int Currency { get; set; }
         public User Owner { get; set; }
     }
 }

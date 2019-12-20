@@ -31,6 +31,7 @@ namespace GUI_Banking
             var _usermame = UserName.Text;
             var _password = Password.Text;
             var bm = new Bank_End.BankManager();
+
             //НАПОМИНАНИЕ проверить такого менеджера
             var st = new StartPage();
             st.Show();
