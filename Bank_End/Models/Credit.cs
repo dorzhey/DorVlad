@@ -9,6 +9,7 @@ namespace Bank_End.Models
     public class Credit
     {
         public int CreditID { get; set; }
+        public int Regularity { get; set; }
         public decimal CreditRate { get; set; }
         public DateTime IssuanceDate { get; set; }
         public DateTime ExpireDate { get; set; }
