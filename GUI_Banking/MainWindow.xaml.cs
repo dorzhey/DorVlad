@@ -31,10 +31,26 @@ namespace GUI_Banking
             var _usermame = UserName.Text;
             var _password = Password.Text;
             var bm = new Bank_End.BankManager();
+            var check = 0;
+            foreach(var manager in bm.managers)
+            {
+                if(manager.ManagerID ==_usermame && manager.Password == _password)
+                {
+                    check++;
+                }
+            }
 
             //НАПОМИНАНИЕ проверить такого менеджера
-            var st = new StartPage();
-            st.Show();
+            if (check > 0)
+            {
+                var st = new StartPage();
+                st.Show();
+            }
+            else
+            {
+                MessageBox.Show("Нет такого менеджера");
+            }
+           
         }
     }
 

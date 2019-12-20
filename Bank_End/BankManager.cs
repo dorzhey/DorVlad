@@ -13,6 +13,8 @@ namespace Bank_End
         public List<Account> accounts;
         public List<User> users;
         public List<Transaction> transactions;
+        public List<Manager> managers;
+        public List<Card> cards;
 
         public List<Deposit> deposits;
         public List<Credit> credits;
@@ -351,13 +353,13 @@ namespace Bank_End
         public void LoadData()
         {
             //загрузка данных с базы данных
-            GetUsers();
-            GetAccounts();
-            GetCards();
-            GetCredits();
-            GetTransactions();
-            GetDeposits();
-            GetManagers();
+          users=  GetUsers();
+          accounts=  GetAccounts();
+          cards = GetCards();
+           credits = GetCredits();
+           transactions= GetTransactions();
+           deposits= GetDeposits();
+           managers= GetManagers();
         }
             public void SaveData()
         {
