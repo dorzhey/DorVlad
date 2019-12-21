@@ -34,7 +34,7 @@ namespace GUI_Banking
             var check = 0;
             foreach(var manager in bm.managers)
             {
-                if(manager.ManagerID ==_usermame && manager.Password == _password)
+                if(manager.ManagerID ==int.Parse(_usermame) && manager.Password == _password)
                 {
                     check++;
                 }
