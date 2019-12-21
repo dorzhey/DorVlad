@@ -8,7 +8,7 @@ namespace Bank_End.Models
 {
     public class Card
     {
-        public int CardNumber { get; set; }
+        public long CardNumber { get; set; }
         public Account CardAccount { get; set; }
 
     }

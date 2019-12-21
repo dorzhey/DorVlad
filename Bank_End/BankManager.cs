@@ -117,7 +117,7 @@ namespace Bank_End
         public List<List<string>> Desirialize(string filename)
         {
             List<List<string>> result = new List<List<string>> { };
-            using (var reader = new StreamReader($"{filename}"))
+            using (var reader = new StreamReader(filename))
             {
 
                 var iterator = 0;
@@ -135,7 +135,7 @@ namespace Bank_End
 
                 }
 
-                Console.ReadKey();
+                
 
 
 
@@ -153,7 +153,7 @@ namespace Bank_End
             {
                 var user = new User
                 {
-                    UserID = int.Parse(line[0]),
+                    UserID = long.Parse(line[0]),
                     Name = line[1],
                     SecondName = line[2],
                     Password = line[3]
@@ -171,7 +171,7 @@ namespace Bank_End
             {
                 var manager = new Manager
                 {
-                    ManagerID = int.Parse(line[0]),
+                    ManagerID = long.Parse(line[0]),
                     Password = line[1]
                 };
                 result.Add(manager);
@@ -185,7 +185,7 @@ namespace Bank_End
             var owner = new User();
             foreach (var line in temp)
             {
-                var Owner = int.Parse(line[3]);
+                var Owner = long.Parse(line[3]);
                 foreach(var user in users)
                 {
                     if(user.UserID == Owner)
@@ -195,8 +195,8 @@ namespace Bank_End
                 }
                 var account = new Account
                 {
-                    AccountID = int.Parse(line[0]),
-                    Balanse = int.Parse(line[1]),
+                    AccountID = long.Parse(line[0]),
+                    Balanse = long.Parse(line[1]),
                     Currency = int.Parse(line[2]),
                     Owner = owner
                 };
@@ -213,7 +213,7 @@ namespace Bank_End
             var acc = new Account();
             foreach (var line in temp)
             {
-                var CardAccount = int.Parse(line[1]);
+                var CardAccount = long.Parse(line[1]);
                 foreach (var account in accounts)
                 {
                     if (account.AccountID == CardAccount)
@@ -225,7 +225,7 @@ namespace Bank_End
 
                 var card = new Card
                 {
-                    CardNumber = int.Parse(line[0]),
+                    CardNumber = long.Parse(line[0]),
                     CardAccount = acc,
 
                 };
@@ -242,7 +242,7 @@ namespace Bank_End
             var borrower = new User();
             foreach (var line in temp)
             {
-                var _Borrower = int.Parse(line[0]);
+                var _Borrower = long.Parse(line[0]);
                 foreach (var user in users)
                 {
                     if (user.UserID == _Borrower)
@@ -253,7 +253,7 @@ namespace Bank_End
                 var credit = new Credit
                 {
                     
-                    CreditID = int.Parse(line[1]),
+                    CreditID = long.Parse(line[1]),
                     Regularity = int.Parse(line[2]),
                     CreditRate  = int.Parse(line[3]),
                     IssuanceDate = DateTime.Parse(line[4]),
@@ -275,7 +275,7 @@ namespace Bank_End
             var borrower = new User();
             foreach (var line in temp)
             {
-                var Borrower = int.Parse(line[0]);
+                var Borrower = long.Parse(line[0]);
                 foreach (var user in users)
                 {
                     if (user.UserID == Borrower)
@@ -286,7 +286,7 @@ namespace Bank_End
                 var deposit = new Deposit
                 {
 
-                    DepositID = int.Parse(line[1]),
+                    DepositID = long.Parse(line[1]),
                     Regularity = int.Parse(line[2]),
                     DepositRate = int.Parse(line[3]),
                     IssuanceDate = DateTime.Parse(line[4]),
@@ -310,7 +310,7 @@ namespace Bank_End
             {
 
 
-                var _Sender = int.Parse(line[0]);
+                var _Sender = long.Parse(line[0]);
                 foreach (var account in accounts)
                 {
                     if (account.AccountID == _Sender)
@@ -320,7 +320,7 @@ namespace Bank_End
                 }
 
 
-                var _Reciever = int.Parse(line[1]);
+                var _Reciever = long.Parse(line[1]);
                 foreach (var account in accounts)
                 {
                     if (account.AccountID == _Reciever)
@@ -332,7 +332,7 @@ namespace Bank_End
 
                 var transaction = new Transaction
                 {
-                    Amount = int.Parse(line[2]),
+                    Amount = long.Parse(line[2]),
                     TransactionDate = DateTime.Parse(line[3]),
                     Sender  = sender,
                     Reciever = reciever

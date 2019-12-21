@@ -8,7 +8,7 @@ namespace Bank_End.Models
 {
     public class User
     {
-        public int UserID { get; set; }
+        public long UserID { get; set; }
         public string Name { get; set; }
         public string SecondName { get; set; }
         public string Password { get; set; }

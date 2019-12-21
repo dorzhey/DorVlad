@@ -8,7 +8,7 @@ namespace Bank_End.Models
 {
     public class Transaction
     {
-        public int TransactionID { get; set; }
+        public long TransactionID { get; set; }
         public DateTime TransactionDate { get; set; }
         public decimal Amount { get; set; }
         public Account Sender { get; set; }

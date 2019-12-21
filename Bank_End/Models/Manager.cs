@@ -8,7 +8,7 @@ namespace Bank_End.Models
 {
     public class Manager
     {
-        public int ManagerID { get; set; }
+        public long ManagerID { get; set; }
         public string Password { get; set; }
 
     }
